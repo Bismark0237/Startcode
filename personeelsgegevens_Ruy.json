@@ -1,0 +1,12 @@
+{
+    "naam": "Ruy",
+    "werktijd": 480,
+    "beroepstype": "Mehchanisch Montuer",
+    "bevoegdheid": "senior",
+    "specialist_in_attracties": [
+        "Mega Spin",
+        " River Rapids"
+    ],
+    "pauze_opsplitsen": false,
+    "max_fysieke_belasting": 30
+}

@@ -1,0 +1,43 @@
+{
+    "personeelsgegevens": {
+        "naam": "Ruy",
+        "werktijd": 480,
+        "beroepstype": "Mehchanisch Montuer",
+        "bevoegdheid": "senior",
+        "specialist_in_attracties": [
+            "Mega Spin",
+            " River Rapids"
+        ],
+        "pauze_opsplitsen": false,
+        "max_fysieke_belasting": 30
+    },
+    "weergegevens": {
+        "temperatuur": 22,
+        "kans_op_regen": 50
+    },
+    "dagtaken": [
+        {
+            "tijd": "08:00",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mehchanisch Montuer",
+            "bevoegdheid": "senior",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "08:30",
+            "taak": "Opruimen werkplek",
+            "duur": 15,
+            "prioriteit": "Laag",
+            "beroepstype": "Mehchanisch Montuer",
+            "bevoegdheid": "senior",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        }
+    ],
+    "totale_duur": 45
+}

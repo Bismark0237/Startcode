@@ -16,42 +16,90 @@
         {
             "tijd": "08:00",
             "taak": "Controle van zekeringen",
-            "duur": 30
+            "duur": 30,
+            "prioriteit": "hoog",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Twister",
+            "fysieke_belasting": 12,
+            "buitenwerk": "Nee"
         },
         {
             "tijd": "08:30",
             "taak": "Reparatie aan startmechanismen",
-            "duur": 40
+            "duur": 40,
+            "prioriteit": "hoog",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Starship Simulator",
+            "fysieke_belasting": 30,
+            "buitenwerk": "Nee"
         },
         {
             "tijd": "09:10",
             "taak": "Oplossen van technische storingen",
-            "duur": 50
+            "duur": 50,
+            "prioriteit": "hoog",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Mega Spin",
+            "fysieke_belasting": 25,
+            "buitenwerk": "Ja"
         },
         {
             "tijd": "10:00",
             "taak": "Aanpassing van instellingen",
-            "duur": 50
+            "duur": 50,
+            "prioriteit": "hoog",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Speed Racer",
+            "fysieke_belasting": 25,
+            "buitenwerk": "Ja"
         },
         {
             "tijd": "10:50",
             "taak": "Vervanging van filters in ventilatiesystemen",
-            "duur": 50
+            "duur": 50,
+            "prioriteit": "hoog",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": null,
+            "fysieke_belasting": 15,
+            "buitenwerk": "Nee"
         },
         {
             "tijd": "11:40",
             "taak": "Vervanging van algemene stroomkabels",
-            "duur": 50
+            "duur": 50,
+            "prioriteit": "hoog",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": null,
+            "fysieke_belasting": 25,
+            "buitenwerk": "Nee"
         },
         {
             "tijd": "12:30",
             "taak": "Vervanging van filters in ventilatiesystemen",
-            "duur": 50
+            "duur": 50,
+            "prioriteit": "hoog",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": null,
+            "fysieke_belasting": 15,
+            "buitenwerk": "Nee"
         },
         {
             "tijd": "13:20",
             "taak": "Vervanging van algemene stroomkabels",
-            "duur": 120
+            "duur": 120,
+            "prioriteit": "hoog",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": null,
+            "fysieke_belasting": 25,
+            "buitenwerk": "Nee"
         }
     ]
 }

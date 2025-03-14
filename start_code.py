@@ -8,8 +8,8 @@ from database_wrapper import Database
 # Initialisatie databaseconnectie
 db = Database(host="localhost", gebruiker="user", wachtwoord="password", database="attractiepark_onderhoud")
 
-# Start- en eindtijd werkdag
-START_TIJD = datetime.strptime("08:00", "%H:%M")  # Start werkdag om 08:00
+# Start werkdag tijd
+START_TIJD = datetime.strptime("08:00", "%H:%M")
 
 # Functie om JSON-bestand in te lezen
 def lees_personeelsgegevens(bestandspad):
@@ -17,11 +17,8 @@ def lees_personeelsgegevens(bestandspad):
     try:
         with open(bestandspad, 'r') as json_bestand:
             return json.load(json_bestand)
-    except FileNotFoundError:
-        print(f"❌ Fout: Het bestand {bestandspad} is niet gevonden!")
-        return None
-    except json.JSONDecodeError:
-        print(f"❌ Fout: Ongeldig JSON-formaat in {bestandspad}!")
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"❌ Fout: Kan JSON niet laden ({e})")
         return None
 
 # Functie om een nieuw personeelslid aan te maken
@@ -68,11 +65,15 @@ def haal_onderhoudstaken_op(personeelslid):
         print("❌ Geen personeelsgegevens ontvangen!")
         return []
 
-    db.connect()
-    
     beroep = personeelslid.get("beroepstype", "").strip()
     bevoegdheid = personeelslid.get("bevoegdheid", "").strip()
 
+    if not beroep or not bevoegdheid:
+        print("❌ Fout: Beroepstype of bevoegdheid ontbreekt!")
+        return []
+
+    db.connect()
+    
     select_query = """
         SELECT omschrijving, duur, prioriteit, beroepstype, bevoegdheid, fysieke_belasting, attractie, is_buitenwerk
         FROM onderhoudstaak 
@@ -101,6 +102,7 @@ def genereer_dagplanning(personeelslid, onderhoudstaken):
     totale_duur = 0
     dagplanning = []
 
+    # Controleer of taken zijn opgehaald, anders alternatieven gebruiken
     if not onderhoudstaken:
         print("⚠ Geen onderhoudstaken gevonden, alternatieve taken worden gebruikt.")
         onderhoudstaken = [
@@ -111,19 +113,34 @@ def genereer_dagplanning(personeelslid, onderhoudstaken):
     for taak in onderhoudstaken:
         taak_naam = taak.get("omschrijving", "Onbekend")
         taak_duur = taak.get("duur", 0)
+        taak_prioriteit = taak.get("prioriteit", "Onbekend")
+        attractie = taak.get("attractie", "Geen")
+        fysieke_belasting = taak.get("fysieke_belasting", "Onbekend")
+        buitenwerk = "Ja" if taak.get("is_buitenwerk", 0) else "Nee"
 
         if totale_duur + taak_duur > max_werkduur:
             break  # Stop als werkduur is bereikt
 
         tijdslot = huidige_tijd.strftime("%H:%M")
-        dagplanning.append({"tijd": tijdslot, "taak": taak_naam, "duur": taak_duur})
+        dagplanning.append({
+            "tijd": tijdslot,
+            "taak": taak_naam,
+            "duur": taak_duur,
+            "prioriteit": taak_prioriteit,
+            "beroepstype": personeelslid["beroepstype"],
+            "bevoegdheid": personeelslid["bevoegdheid"],
+            "attractie": attractie,
+            "fysieke_belasting": fysieke_belasting,
+            "buitenwerk": buitenwerk
+        })
 
         # Update de huidige tijd en totale duur
         huidige_tijd += timedelta(minutes=taak_duur)
         totale_duur += taak_duur
 
-    print(f"✅ Dagplanning gegenereerd. Totaal aantal werkminuten: {totale_duur}")
-    return dagplanning
+    print(f"✅ Dagplanning gegenereerd. Totaal geplande tijd: {totale_duur} minuten")
+    
+    return dagplanning, totale_duur
 
 # Hoofdprogramma
 def main():
@@ -140,23 +157,17 @@ def main():
     personeelsgegevens = lees_personeelsgegevens(bestand_pad)
 
     if personeelsgegevens:
-        # Haal onderhoudstaken op
         onderhoudstaken = haal_onderhoudstaken_op(personeelsgegevens)
-
-        # Genereer dagplanning
-        dagplanning = genereer_dagplanning(personeelsgegevens, onderhoudstaken)
-
-        # Voeg weergegevens toe (dummy-data)
+        dagplanning, totale_duur = genereer_dagplanning(personeelsgegevens, onderhoudstaken)
         weergegevens = {"temperatuur": 22, "kans_op_regen": 50}
 
-        # Bouw de JSON-structuur
         output_data = {
             "personeelsgegevens": personeelsgegevens,
             "weergegevens": weergegevens,
-            "dagtaken": dagplanning
+            "dagtaken": dagplanning,
+            "totale_duur": totale_duur
         }
 
-        # Opslaan in JSON-bestand
         uitvoer_pad = Path(__file__).parent / f'dagplanning_{personeelsgegevens["naam"].replace(" ", "_")}.json'
         with open(uitvoer_pad, 'w') as json_bestand_uitvoer:
             json.dump(output_data, json_bestand_uitvoer, indent=4)

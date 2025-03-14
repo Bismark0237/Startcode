@@ -1,0 +1,126 @@
+{
+    "personeelsgegevens": {
+        "naam": "OPK",
+        "werktijd": 480,
+        "beroepstype": "Mechanisch Monteur",
+        "bevoegdheid": "Senior",
+        "specialist_in_attracties": [
+            "Mega Spin"
+        ],
+        "pauze_opsplitsen": false,
+        "max_fysieke_belasting": 30
+    },
+    "dagtaken": [
+        {
+            "tijd": "08:00",
+            "taak": "Kalibratie van draaiassen",
+            "duur": 30,
+            "prioriteit": "laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Mega Spin",
+            "fysieke_belasting": 8,
+            "buitenwerk": "Ja"
+        },
+        {
+            "tijd": "08:30",
+            "taak": "Reparatie van waterkanonnen",
+            "duur": 60,
+            "prioriteit": "laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Mega Spin",
+            "fysieke_belasting": 15,
+            "buitenwerk": "Ja"
+        },
+        {
+            "tijd": "09:30",
+            "taak": "Herstel van dakconstructie",
+            "duur": 30,
+            "prioriteit": "hoog",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": null,
+            "fysieke_belasting": 25,
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "10:00",
+            "taak": "Herstel van kleine mechanische onderdelen",
+            "duur": 30,
+            "prioriteit": "hoog",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Spinning Teacups",
+            "fysieke_belasting": 12,
+            "buitenwerk": "Ja"
+        },
+        {
+            "tijd": "10:30",
+            "taak": "Onderhoud aan draaiassen",
+            "duur": 40,
+            "prioriteit": "hoog",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Spinning Teacups",
+            "fysieke_belasting": 28,
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "11:10",
+            "taak": "Controle van dakconstructies",
+            "duur": 40,
+            "prioriteit": "hoog",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": null,
+            "fysieke_belasting": 25,
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "11:50",
+            "taak": "Mechanisch onderhoud aan scharnieren",
+            "duur": 45,
+            "prioriteit": "hoog",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Twister",
+            "fysieke_belasting": 25,
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "12:35",
+            "taak": "Reparatie aan karretjes",
+            "duur": 120,
+            "prioriteit": "hoog",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Galactic Journey",
+            "fysieke_belasting": 20,
+            "buitenwerk": "Ja"
+        },
+        {
+            "tijd": "14:35",
+            "taak": "Kalibratie van draaiassen",
+            "duur": 30,
+            "prioriteit": "laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Mega Spin",
+            "fysieke_belasting": 8,
+            "buitenwerk": "Ja"
+        },
+        {
+            "tijd": "15:05",
+            "taak": "Reparatie van waterkanonnen",
+            "duur": 60,
+            "prioriteit": "laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "attractie": "Mega Spin",
+            "fysieke_belasting": 15,
+            "buitenwerk": "Ja"
+        }
+    ],
+    "totale_duur": 485
+}

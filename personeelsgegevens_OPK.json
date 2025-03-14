@@ -1,11 +1,10 @@
 {
-    "naam": "Max",
+    "naam": "OPK",
     "werktijd": 480,
     "beroepstype": "Mechanisch Monteur",
     "bevoegdheid": "Senior",
     "specialist_in_attracties": [
-        "Mega Spin",
-        " River Rapids"
+        "Mega Spin"
     ],
     "pauze_opsplitsen": false,
     "max_fysieke_belasting": 30

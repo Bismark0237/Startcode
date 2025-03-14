@@ -5,9 +5,6 @@ import pprint
 from datetime import datetime, timedelta
 from database_wrapper import Database
 
-# Initialisatie databaseconnectie
-db = Database(host="localhost", gebruiker="user", wachtwoord="password", database="attractiepark_onderhoud")
-
 # Start werkdag tijd
 START_TIJD = datetime.strptime("08:00", "%H:%M")
 
@@ -58,8 +55,8 @@ def maak_personeelslid():
     print(f"✅ Personeelslid '{naam}' aangemaakt en opgeslagen in {bestandspad}")
     return bestandspad
 
-# Functie om onderhoudstaken op te halen op basis van beroepstype en bevoegdheid
-def haal_onderhoudstaken_op(personeelslid):
+# Functie om onderhoudstaken op te halen
+def haal_onderhoudstaken_op(db, personeelslid):
     """Haalt onderhoudstaken op uit de database op basis van beroepstype en bevoegdheid."""
     if not personeelslid:
         print("❌ Geen personeelsgegevens ontvangen!")
@@ -72,8 +69,6 @@ def haal_onderhoudstaken_op(personeelslid):
         print("❌ Fout: Beroepstype of bevoegdheid ontbreekt!")
         return []
 
-    db.connect()
-    
     select_query = """
         SELECT omschrijving, duur, prioriteit, beroepstype, bevoegdheid, fysieke_belasting, attractie, is_buitenwerk
         FROM onderhoudstaak 
@@ -81,14 +76,14 @@ def haal_onderhoudstaken_op(personeelslid):
         ORDER BY prioriteit DESC, duur ASC
     """
 
+    print(f"🔍 Uitvoeren SQL-query met parameters: {beroep}, {bevoegdheid}")
+
     try:
         onderhoudstaken = db.execute_query(select_query, (beroep, bevoegdheid))
     except Exception as e:
         print(f"❌ Fout bij uitvoeren van query: {e}")
         onderhoudstaken = []
 
-    db.close()
-    
     if not onderhoudstaken:
         print(f"⚠ Geen onderhoudstaken gevonden voor functie: {beroep} met bevoegdheid: {bevoegdheid}")
     
@@ -96,31 +91,31 @@ def haal_onderhoudstaken_op(personeelslid):
 
 # Functie om een dagplanning te genereren
 def genereer_dagplanning(personeelslid, onderhoudstaken):
-    """Genereert een volledige dagplanning met taken en pauzes tot de werktijd is gevuld."""
-    max_werkduur = personeelslid.get("werktijd", 180)
+    """Genereert een volledige dagplanning en slaat deze op als JSON."""
+    max_werkduur = personeelslid.get("werktijd", 480)  # Max werkduur in minuten
     huidige_tijd = START_TIJD
     totale_duur = 0
     dagplanning = []
 
-    # Controleer of taken zijn opgehaald, anders alternatieve taken gebruiken
     if not onderhoudstaken:
-        print("⚠ Geen onderhoudstaken gevonden, alternatieve taken worden gebruikt.")
+        print("⚠ Geen taken gevonden! Gebruik fallback-taken.")
         onderhoudstaken = [
-            {"omschrijving": "Controle gereedschap", "duur": 30, "prioriteit": "Laag", "beroepstype": "Algemeen", "bevoegdheid": "Junior"},
-            {"omschrijving": "Opruimen werkplek", "duur": 15, "prioriteit": "Laag", "beroepstype": "Algemeen", "bevoegdheid": "Junior"}
+            {"omschrijving": "Controle gereedschap", "duur": 30, "prioriteit": "Laag"},
+            {"omschrijving": "Opruimen werkplek", "duur": 15, "prioriteit": "Laag"},
+            {"omschrijving": "Routine inspectie", "duur": 45, "prioriteit": "Laag"}
         ]
 
-    while totale_duur < max_werkduur:  # Blijf taken toevoegen tot werktijd is gevuld
+    while totale_duur < max_werkduur:
         for taak in onderhoudstaken:
+            if totale_duur >= max_werkduur:
+                break  # Stop als de werktijd vol is
+            
             taak_naam = taak.get("omschrijving", "Onbekend")
             taak_duur = taak.get("duur", 0)
             taak_prioriteit = taak.get("prioriteit", "Onbekend")
             attractie = taak.get("attractie", "Geen")
             fysieke_belasting = taak.get("fysieke_belasting", "Onbekend")
             buitenwerk = "Ja" if taak.get("is_buitenwerk", 0) else "Nee"
-
-            if totale_duur + taak_duur > max_werkduur:
-                break  # Stop als werkduur is bereikt
 
             tijdslot = huidige_tijd.strftime("%H:%M")
             dagplanning.append({
@@ -135,12 +130,8 @@ def genereer_dagplanning(personeelslid, onderhoudstaken):
                 "buitenwerk": buitenwerk
             })
 
-            # Update de huidige tijd en totale duur
             huidige_tijd += timedelta(minutes=taak_duur)
             totale_duur += taak_duur
-
-            if totale_duur >= max_werkduur:
-                break  # Stop als de planning vol zit
 
     print(f"✅ Dagplanning gegenereerd. Totaal geplande tijd: {totale_duur} minuten")
     
@@ -148,6 +139,9 @@ def genereer_dagplanning(personeelslid, onderhoudstaken):
 
 # Hoofdprogramma
 def main():
+    db = Database(host="localhost", gebruiker="user", wachtwoord="password", database="attractiepark_onderhoud")
+    db.connect()
+
     print("🌟 Welkom bij het personeelsbeheer van Attractiepark Lake Side Mania!")
     keuze = input("Wil je een nieuw personeelslid aanmaken? (ja/nee): ").strip().lower()
 
@@ -157,26 +151,21 @@ def main():
         naam = input("📂 Voer de naam van het personeelslid in om de taken op te halen: ").strip()
         bestand_pad = Path(__file__).parent / f'personeelsgegevens_{naam.replace(" ", "_")}.json'
     
-    # Lees personeelsgegevens
     personeelsgegevens = lees_personeelsgegevens(bestand_pad)
 
     if personeelsgegevens:
-        onderhoudstaken = haal_onderhoudstaken_op(personeelsgegevens)
+        onderhoudstaken = haal_onderhoudstaken_op(db, personeelsgegevens)
         dagplanning, totale_duur = genereer_dagplanning(personeelsgegevens, onderhoudstaken)
-        weergegevens = {"temperatuur": 22, "kans_op_regen": 50}
 
-        output_data = {
-            "personeelsgegevens": personeelsgegevens,
-            "weergegevens": weergegevens,
-            "dagtaken": dagplanning,
-            "totale_duur": totale_duur
-        }
+        output_data = {"personeelsgegevens": personeelsgegevens, "dagtaken": dagplanning, "totale_duur": totale_duur}
 
         uitvoer_pad = Path(__file__).parent / f'dagplanning_{personeelsgegevens["naam"].replace(" ", "_")}.json'
         with open(uitvoer_pad, 'w') as json_bestand_uitvoer:
             json.dump(output_data, json_bestand_uitvoer, indent=4)
 
         print(f"✅ Dagplanning opgeslagen in {uitvoer_pad}")
+
+    db.close()
 
 if __name__ == "__main__":
     main()

@@ -1,11 +1,10 @@
 {
-    "naam": "Ruby",
+    "naam": "KOP",
     "werktijd": 480,
     "beroepstype": "Mechanisch Monteur",
-    "bevoegdheid": "Senoir",
+    "bevoegdheid": "Senior",
     "specialist_in_attracties": [
-        "Mega Spin",
-        " River Rapids"
+        "Mega Spin"
     ],
     "pauze_opsplitsen": false,
     "max_fysieke_belasting": 30

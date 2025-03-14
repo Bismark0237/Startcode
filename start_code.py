@@ -96,13 +96,13 @@ def haal_onderhoudstaken_op(personeelslid):
 
 # Functie om een dagplanning te genereren
 def genereer_dagplanning(personeelslid, onderhoudstaken):
-    """Genereert een dagplanning met taken en pauzes."""
+    """Genereert een volledige dagplanning met taken en pauzes tot de werktijd is gevuld."""
     max_werkduur = personeelslid.get("werktijd", 180)
     huidige_tijd = START_TIJD
     totale_duur = 0
     dagplanning = []
 
-    # Controleer of taken zijn opgehaald, anders alternatieven gebruiken
+    # Controleer of taken zijn opgehaald, anders alternatieve taken gebruiken
     if not onderhoudstaken:
         print("⚠ Geen onderhoudstaken gevonden, alternatieve taken worden gebruikt.")
         onderhoudstaken = [
@@ -110,33 +110,37 @@ def genereer_dagplanning(personeelslid, onderhoudstaken):
             {"omschrijving": "Opruimen werkplek", "duur": 15, "prioriteit": "Laag", "beroepstype": "Algemeen", "bevoegdheid": "Junior"}
         ]
 
-    for taak in onderhoudstaken:
-        taak_naam = taak.get("omschrijving", "Onbekend")
-        taak_duur = taak.get("duur", 0)
-        taak_prioriteit = taak.get("prioriteit", "Onbekend")
-        attractie = taak.get("attractie", "Geen")
-        fysieke_belasting = taak.get("fysieke_belasting", "Onbekend")
-        buitenwerk = "Ja" if taak.get("is_buitenwerk", 0) else "Nee"
+    while totale_duur < max_werkduur:  # Blijf taken toevoegen tot werktijd is gevuld
+        for taak in onderhoudstaken:
+            taak_naam = taak.get("omschrijving", "Onbekend")
+            taak_duur = taak.get("duur", 0)
+            taak_prioriteit = taak.get("prioriteit", "Onbekend")
+            attractie = taak.get("attractie", "Geen")
+            fysieke_belasting = taak.get("fysieke_belasting", "Onbekend")
+            buitenwerk = "Ja" if taak.get("is_buitenwerk", 0) else "Nee"
 
-        if totale_duur + taak_duur > max_werkduur:
-            break  # Stop als werkduur is bereikt
+            if totale_duur + taak_duur > max_werkduur:
+                break  # Stop als werkduur is bereikt
 
-        tijdslot = huidige_tijd.strftime("%H:%M")
-        dagplanning.append({
-            "tijd": tijdslot,
-            "taak": taak_naam,
-            "duur": taak_duur,
-            "prioriteit": taak_prioriteit,
-            "beroepstype": personeelslid["beroepstype"],
-            "bevoegdheid": personeelslid["bevoegdheid"],
-            "attractie": attractie,
-            "fysieke_belasting": fysieke_belasting,
-            "buitenwerk": buitenwerk
-        })
+            tijdslot = huidige_tijd.strftime("%H:%M")
+            dagplanning.append({
+                "tijd": tijdslot,
+                "taak": taak_naam,
+                "duur": taak_duur,
+                "prioriteit": taak_prioriteit,
+                "beroepstype": personeelslid["beroepstype"],
+                "bevoegdheid": personeelslid["bevoegdheid"],
+                "attractie": attractie,
+                "fysieke_belasting": fysieke_belasting,
+                "buitenwerk": buitenwerk
+            })
 
-        # Update de huidige tijd en totale duur
-        huidige_tijd += timedelta(minutes=taak_duur)
-        totale_duur += taak_duur
+            # Update de huidige tijd en totale duur
+            huidige_tijd += timedelta(minutes=taak_duur)
+            totale_duur += taak_duur
+
+            if totale_duur >= max_werkduur:
+                break  # Stop als de planning vol zit
 
     print(f"✅ Dagplanning gegenereerd. Totaal geplande tijd: {totale_duur} minuten")
     

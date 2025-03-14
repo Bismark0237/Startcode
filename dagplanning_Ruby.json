@@ -1,0 +1,252 @@
+{
+    "personeelsgegevens": {
+        "naam": "Ruby",
+        "werktijd": 480,
+        "beroepstype": "Mechanisch Monteur",
+        "bevoegdheid": "Senoir",
+        "specialist_in_attracties": [
+            "Mega Spin",
+            " River Rapids"
+        ],
+        "pauze_opsplitsen": false,
+        "max_fysieke_belasting": 30
+    },
+    "weergegevens": {
+        "temperatuur": 22,
+        "kans_op_regen": 50
+    },
+    "dagtaken": [
+        {
+            "tijd": "08:00",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "08:30",
+            "taak": "Opruimen werkplek",
+            "duur": 15,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "08:45",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "09:15",
+            "taak": "Opruimen werkplek",
+            "duur": 15,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "09:30",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "10:00",
+            "taak": "Opruimen werkplek",
+            "duur": 15,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "10:15",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "10:45",
+            "taak": "Opruimen werkplek",
+            "duur": 15,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "11:00",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "11:30",
+            "taak": "Opruimen werkplek",
+            "duur": 15,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "11:45",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "12:15",
+            "taak": "Opruimen werkplek",
+            "duur": 15,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "12:30",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "13:00",
+            "taak": "Opruimen werkplek",
+            "duur": 15,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "13:15",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "13:45",
+            "taak": "Opruimen werkplek",
+            "duur": 15,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "14:00",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "14:30",
+            "taak": "Opruimen werkplek",
+            "duur": 15,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "14:45",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "15:15",
+            "taak": "Opruimen werkplek",
+            "duur": 15,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        },
+        {
+            "tijd": "15:30",
+            "taak": "Controle gereedschap",
+            "duur": 30,
+            "prioriteit": "Laag",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senoir",
+            "attractie": "Geen",
+            "fysieke_belasting": "Onbekend",
+            "buitenwerk": "Nee"
+        }
+    ],
+    "totale_duur": 480
+}

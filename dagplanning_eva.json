@@ -1,0 +1,81 @@
+[
+    {
+        "tijd": "08:00",
+        "taak": "Kalibratie van draaiassen",
+        "duur": 30,
+        "attractie": "Mega Spin",
+        "fysieke_belasting": 8,
+        "buitenwerk": "Ja"
+    },
+    {
+        "tijd": "08:30",
+        "taak": "Reparatie van waterkanonnen",
+        "duur": 60,
+        "attractie": "Mega Spin",
+        "fysieke_belasting": 15,
+        "buitenwerk": "Ja"
+    },
+    {
+        "tijd": "09:30",
+        "taak": "Herstel van dakconstructie",
+        "duur": 30,
+        "attractie": null,
+        "fysieke_belasting": 25,
+        "buitenwerk": "Nee"
+    },
+    {
+        "tijd": "10:00",
+        "taak": "Herstel van kleine mechanische onderdelen",
+        "duur": 30,
+        "attractie": "Spinning Teacups",
+        "fysieke_belasting": 12,
+        "buitenwerk": "Ja"
+    },
+    {
+        "tijd": "10:30",
+        "taak": "Onderhoud aan draaiassen",
+        "duur": 40,
+        "attractie": "Spinning Teacups",
+        "fysieke_belasting": 28,
+        "buitenwerk": "Nee"
+    },
+    {
+        "tijd": "11:10",
+        "taak": "Controle van dakconstructies",
+        "duur": 40,
+        "attractie": null,
+        "fysieke_belasting": 25,
+        "buitenwerk": "Nee"
+    },
+    {
+        "tijd": "11:50",
+        "taak": "Mechanisch onderhoud aan scharnieren",
+        "duur": 45,
+        "attractie": "Twister",
+        "fysieke_belasting": 25,
+        "buitenwerk": "Nee"
+    },
+    {
+        "tijd": "12:35",
+        "taak": "Reparatie aan karretjes",
+        "duur": 120,
+        "attractie": "Galactic Journey",
+        "fysieke_belasting": 20,
+        "buitenwerk": "Ja"
+    },
+    {
+        "tijd": "10:00",
+        "taak": "Korte pauze",
+        "duur": 15
+    },
+    {
+        "tijd": "12:30",
+        "taak": "Lunchpauze",
+        "duur": 30
+    },
+    {
+        "tijd": "15:00",
+        "taak": "Korte pauze",
+        "duur": 15
+    }
+]

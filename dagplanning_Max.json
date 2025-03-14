@@ -1,0 +1,60 @@
+{
+    "personeelsgegevens": {
+        "naam": "Max",
+        "werktijd": 480,
+        "beroepstype": "Mechanisch Monteur",
+        "bevoegdheid": "Senior",
+        "specialist_in_attracties": [
+            "Mega Spin",
+            " River Rapids"
+        ],
+        "pauze_opsplitsen": false,
+        "max_fysieke_belasting": 30
+    },
+    "weergegevens": {
+        "temperatuur": 22,
+        "kans_op_regen": 50
+    },
+    "dagtaken": [
+        {
+            "tijd": "08:00",
+            "taak": "Kalibratie van draaiassen",
+            "duur": 30
+        },
+        {
+            "tijd": "08:30",
+            "taak": "Reparatie van waterkanonnen",
+            "duur": 60
+        },
+        {
+            "tijd": "09:30",
+            "taak": "Herstel van dakconstructie",
+            "duur": 30
+        },
+        {
+            "tijd": "10:00",
+            "taak": "Herstel van kleine mechanische onderdelen",
+            "duur": 30
+        },
+        {
+            "tijd": "10:30",
+            "taak": "Onderhoud aan draaiassen",
+            "duur": 40
+        },
+        {
+            "tijd": "11:10",
+            "taak": "Controle van dakconstructies",
+            "duur": 40
+        },
+        {
+            "tijd": "11:50",
+            "taak": "Mechanisch onderhoud aan scharnieren",
+            "duur": 45
+        },
+        {
+            "tijd": "12:35",
+            "taak": "Reparatie aan karretjes",
+            "duur": 120
+        }
+    ]
+}

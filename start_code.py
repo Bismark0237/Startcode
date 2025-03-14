@@ -10,7 +10,6 @@ db = Database(host="localhost", gebruiker="user", wachtwoord="password", databas
 
 # Start- en eindtijd werkdag
 START_TIJD = datetime.strptime("08:00", "%H:%M")  # Start werkdag om 08:00
-EIND_TIJD = datetime.strptime("17:00", "%H:%M")   # Eind werkdag om 17:00
 
 # Functie om JSON-bestand in te lezen
 def lees_personeelsgegevens(bestandspad):
@@ -29,21 +28,29 @@ def lees_personeelsgegevens(bestandspad):
 def maak_personeelslid():
     """Vraagt gegevens van een nieuw personeelslid en slaat deze op in een JSON-bestand."""
     naam = input("👤 Voer de naam van het personeelslid in: ").strip()
-    functie = input("🔧 Voer de functie in (bijv. Elektrisch Monteur, Mechanisch Monteur, Schilder, Onderhoudsmonteur): ").strip()
+    beroepstype = input("🔧 Voer de functie in (bijv. Mechanisch Monteur, Elektrisch Monteur): ").strip()
     bevoegdheid = input("🎓 Voer de bevoegdheid in (Junior, Medior, Senior, Stagiair): ").strip()
     max_werkduur = input("⏳ Voer de maximale werkduur in uren in (standaard = 8): ").strip()
-
+    
     try:
         max_werkduur = int(max_werkduur) * 60  # Omzetten naar minuten
     except ValueError:
         print("⚠ Ongeldige invoer! Standaard werkduur van 8 uur wordt gebruikt.")
         max_werkduur = 8 * 60
 
+    specialist_in_attracties = input("🎢 Voer specialisaties in attracties in, gescheiden door komma’s (of laat leeg): ").strip().split(",")
+
+    if specialist_in_attracties == [""]:
+        specialist_in_attracties = []
+
     personeelslid = {
         "naam": naam,
-        "functie": functie,
+        "werktijd": max_werkduur,
+        "beroepstype": beroepstype,
         "bevoegdheid": bevoegdheid,
-        "max_werkduur": max_werkduur
+        "specialist_in_attracties": specialist_in_attracties,
+        "pauze_opsplitsen": False,
+        "max_fysieke_belasting": 30
     }
 
     bestandspad = Path(__file__).parent / f'personeelsgegevens_{naam.replace(" ", "_")}.json'
@@ -63,16 +70,15 @@ def haal_onderhoudstaken_op(personeelslid):
 
     db.connect()
     
-    beroep = personeelslid.get("functie", "").strip()
+    beroep = personeelslid.get("beroepstype", "").strip()
     bevoegdheid = personeelslid.get("bevoegdheid", "").strip()
 
     select_query = """
-        SELECT * FROM onderhoudstaak 
+        SELECT omschrijving, duur, prioriteit, beroepstype, bevoegdheid, fysieke_belasting, attractie, is_buitenwerk
+        FROM onderhoudstaak 
         WHERE beroepstype = %s AND bevoegdheid = %s 
         ORDER BY prioriteit DESC, duur ASC
     """
-
-    print(f"🔎 SQL Query: {select_query} - Parameters: {beroep}, {bevoegdheid}")
 
     try:
         onderhoudstaken = db.execute_query(select_query, (beroep, bevoegdheid))
@@ -90,49 +96,33 @@ def haal_onderhoudstaken_op(personeelslid):
 # Functie om een dagplanning te genereren
 def genereer_dagplanning(personeelslid, onderhoudstaken):
     """Genereert een dagplanning met taken en pauzes."""
-    max_werkduur = personeelslid.get("max_werkduur", 8 * 60)  # Max werkduur in minuten
+    max_werkduur = personeelslid.get("werktijd", 180)
     huidige_tijd = START_TIJD
     totale_duur = 0
     dagplanning = []
 
-    print(f"🔎 Start werkdag: {huidige_tijd.strftime('%H:%M')}")
-    print(f"🔎 Max werkduur: {max_werkduur} minuten")
-    print(f"🔎 Onderhoudstaken gevonden: {len(onderhoudstaken)}")
+    if not onderhoudstaken:
+        print("⚠ Geen onderhoudstaken gevonden, alternatieve taken worden gebruikt.")
+        onderhoudstaken = [
+            {"omschrijving": "Controle gereedschap", "duur": 30, "prioriteit": "Laag", "beroepstype": "Algemeen", "bevoegdheid": "Junior"},
+            {"omschrijving": "Opruimen werkplek", "duur": 15, "prioriteit": "Laag", "beroepstype": "Algemeen", "bevoegdheid": "Junior"}
+        ]
 
     for taak in onderhoudstaken:
         taak_naam = taak.get("omschrijving", "Onbekend")
-        taak_duur = taak.get("duur", 0)  # Zorg dat je een 'duur' veld hebt in je database
-        attractie = taak.get("attractie", "Algemeen")
-        fysieke_belasting = taak.get("fysieke_belasting", 0)
-        buitenwerk = "Ja" if taak.get("is_buitenwerk", 0) else "Nee"
+        taak_duur = taak.get("duur", 0)
 
         if totale_duur + taak_duur > max_werkduur:
             break  # Stop als werkduur is bereikt
 
         tijdslot = huidige_tijd.strftime("%H:%M")
-        dagplanning.append({
-            "tijd": tijdslot,
-            "taak": taak_naam,
-            "duur": taak_duur,
-            "attractie": attractie,
-            "fysieke_belasting": fysieke_belasting,
-            "buitenwerk": buitenwerk
-        })
+        dagplanning.append({"tijd": tijdslot, "taak": taak_naam, "duur": taak_duur})
 
         # Update de huidige tijd en totale duur
         huidige_tijd += timedelta(minutes=taak_duur)
         totale_duur += taak_duur
 
-    # Voeg pauzes toe
-    pauzes = [
-        {"tijd": "10:00", "taak": "Korte pauze", "duur": 15},
-        {"tijd": "12:30", "taak": "Lunchpauze", "duur": 30},
-        {"tijd": "15:00", "taak": "Korte pauze", "duur": 15}
-    ]
-    dagplanning.extend(pauzes)
-
     print(f"✅ Dagplanning gegenereerd. Totaal aantal werkminuten: {totale_duur}")
-    
     return dagplanning
 
 # Hoofdprogramma
@@ -156,10 +146,20 @@ def main():
         # Genereer dagplanning
         dagplanning = genereer_dagplanning(personeelsgegevens, onderhoudstaken)
 
+        # Voeg weergegevens toe (dummy-data)
+        weergegevens = {"temperatuur": 22, "kans_op_regen": 50}
+
+        # Bouw de JSON-structuur
+        output_data = {
+            "personeelsgegevens": personeelsgegevens,
+            "weergegevens": weergegevens,
+            "dagtaken": dagplanning
+        }
+
         # Opslaan in JSON-bestand
         uitvoer_pad = Path(__file__).parent / f'dagplanning_{personeelsgegevens["naam"].replace(" ", "_")}.json'
         with open(uitvoer_pad, 'w') as json_bestand_uitvoer:
-            json.dump(dagplanning, json_bestand_uitvoer, indent=4)
+            json.dump(output_data, json_bestand_uitvoer, indent=4)
 
         print(f"✅ Dagplanning opgeslagen in {uitvoer_pad}")
 

@@ -1,6 +1,9 @@
 {
     "naam": "Bismark",
-    "functie": "Elektrisch Monteur",
+    "werktijd": 480,
+    "beroepstype": "Elektrisch Monteur",
     "bevoegdheid": "Senior",
-    "max_werkduur": 480
+    "specialist_in_attracties": [],
+    "pauze_opsplitsen": false,
+    "max_fysieke_belasting": 30
 }

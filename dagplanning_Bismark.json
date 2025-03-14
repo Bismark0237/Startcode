@@ -1,93 +1,57 @@
 {
     "personeelsgegevens": {
         "naam": "Bismark",
-        "functie": "Elektrisch Monteur",
+        "werktijd": 480,
+        "beroepstype": "Elektrisch Monteur",
         "bevoegdheid": "Senior",
-        "max_werkduur": 480
+        "specialist_in_attracties": [],
+        "pauze_opsplitsen": false,
+        "max_fysieke_belasting": 30
     },
     "weergegevens": {
         "temperatuur": 22,
-        "weertype": "Zonnig"
+        "kans_op_regen": 50
     },
     "dagtaken": [
         {
             "tijd": "08:00",
             "taak": "Controle van zekeringen",
-            "duur": 30,
-            "attractie": "Twister",
-            "fysieke_belasting": 12,
-            "buitenwerk": "Nee"
+            "duur": 30
         },
         {
             "tijd": "08:30",
             "taak": "Reparatie aan startmechanismen",
-            "duur": 40,
-            "attractie": "Starship Simulator",
-            "fysieke_belasting": 30,
-            "buitenwerk": "Nee"
+            "duur": 40
         },
         {
             "tijd": "09:10",
             "taak": "Oplossen van technische storingen",
-            "duur": 50,
-            "attractie": "Mega Spin",
-            "fysieke_belasting": 25,
-            "buitenwerk": "Ja"
+            "duur": 50
         },
         {
             "tijd": "10:00",
             "taak": "Aanpassing van instellingen",
-            "duur": 50,
-            "attractie": "Speed Racer",
-            "fysieke_belasting": 25,
-            "buitenwerk": "Ja"
+            "duur": 50
         },
         {
             "tijd": "10:50",
             "taak": "Vervanging van filters in ventilatiesystemen",
-            "duur": 50,
-            "attractie": null,
-            "fysieke_belasting": 15,
-            "buitenwerk": "Nee"
+            "duur": 50
         },
         {
             "tijd": "11:40",
             "taak": "Vervanging van algemene stroomkabels",
-            "duur": 50,
-            "attractie": null,
-            "fysieke_belasting": 25,
-            "buitenwerk": "Nee"
+            "duur": 50
         },
         {
             "tijd": "12:30",
             "taak": "Vervanging van filters in ventilatiesystemen",
-            "duur": 50,
-            "attractie": null,
-            "fysieke_belasting": 15,
-            "buitenwerk": "Nee"
+            "duur": 50
         },
         {
             "tijd": "13:20",
             "taak": "Vervanging van algemene stroomkabels",
-            "duur": 120,
-            "attractie": null,
-            "fysieke_belasting": 25,
-            "buitenwerk": "Nee"
-        },
-        {
-            "tijd": "10:00",
-            "taak": "Korte pauze",
-            "duur": 15
-        },
-        {
-            "tijd": "12:30",
-            "taak": "Lunchpauze",
-            "duur": 30
-        },
-        {
-            "tijd": "15:00",
-            "taak": "Korte pauze",
-            "duur": 15
+            "duur": 120
         }
     ]
 }

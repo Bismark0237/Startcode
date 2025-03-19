@@ -8,98 +8,60 @@
         "pauze_opsplitsen": false,
         "max_fysieke_belasting": 30
     },
-    "weergegevens": {
-        "temperatuur": 22,
-        "kans_op_regen": 50
-    },
     "dagtaken": [
         {
             "tijd": "08:00",
-            "taak": "Controle van zekeringen",
-            "duur": 30,
-            "prioriteit": "hoog",
-            "beroepstype": "Elektrisch Monteur",
-            "bevoegdheid": "Senior",
-            "attractie": "Twister",
-            "fysieke_belasting": 12,
-            "buitenwerk": "Nee"
-        },
-        {
-            "tijd": "08:30",
-            "taak": "Reparatie aan startmechanismen",
-            "duur": 40,
-            "prioriteit": "hoog",
-            "beroepstype": "Elektrisch Monteur",
-            "bevoegdheid": "Senior",
-            "attractie": "Starship Simulator",
-            "fysieke_belasting": 30,
-            "buitenwerk": "Nee"
-        },
-        {
-            "tijd": "09:10",
-            "taak": "Oplossen van technische storingen",
-            "duur": 50,
-            "prioriteit": "hoog",
-            "beroepstype": "Elektrisch Monteur",
-            "bevoegdheid": "Senior",
-            "attractie": "Mega Spin",
-            "fysieke_belasting": 25,
-            "buitenwerk": "Ja"
+            "taak": "Controle op veiligheidssensoren",
+            "duur": 120,
+            "weer": "bewolkt"
         },
         {
             "tijd": "10:00",
-            "taak": "Aanpassing van instellingen",
-            "duur": 50,
-            "prioriteit": "hoog",
-            "beroepstype": "Elektrisch Monteur",
-            "bevoegdheid": "Senior",
-            "attractie": "Speed Racer",
-            "fysieke_belasting": 25,
-            "buitenwerk": "Ja"
+            "taak": "Inspectie van elektrische systemen",
+            "duur": 60,
+            "weer": "bewolkt"
         },
         {
-            "tijd": "10:50",
-            "taak": "Vervanging van filters in ventilatiesystemen",
-            "duur": 50,
-            "prioriteit": "hoog",
-            "beroepstype": "Elektrisch Monteur",
-            "bevoegdheid": "Senior",
-            "attractie": null,
-            "fysieke_belasting": 15,
-            "buitenwerk": "Nee"
+            "tijd": "11:00",
+            "taak": "Onderhoud aan verlichting",
+            "duur": 75,
+            "weer": "bewolkt"
         },
         {
-            "tijd": "11:40",
-            "taak": "Vervanging van algemene stroomkabels",
+            "tijd": "12:15",
+            "taak": "Inspectie VR-installatie",
             "duur": 50,
-            "prioriteit": "hoog",
-            "beroepstype": "Elektrisch Monteur",
-            "bevoegdheid": "Senior",
-            "attractie": null,
-            "fysieke_belasting": 25,
-            "buitenwerk": "Nee"
+            "weer": "bewolkt"
         },
         {
-            "tijd": "12:30",
-            "taak": "Vervanging van filters in ventilatiesystemen",
+            "tijd": "13:05",
+            "taak": "Oplossen van technische storingen",
             "duur": 50,
-            "prioriteit": "hoog",
-            "beroepstype": "Elektrisch Monteur",
-            "bevoegdheid": "Senior",
-            "attractie": null,
-            "fysieke_belasting": 15,
-            "buitenwerk": "Nee"
+            "weer": "bewolkt"
         },
         {
-            "tijd": "13:20",
-            "taak": "Vervanging van algemene stroomkabels",
-            "duur": 120,
-            "prioriteit": "hoog",
-            "beroepstype": "Elektrisch Monteur",
-            "bevoegdheid": "Senior",
-            "attractie": null,
-            "fysieke_belasting": 25,
-            "buitenwerk": "Nee"
+            "tijd": "13:55",
+            "taak": "Controle van schroefverbindingen",
+            "duur": 45,
+            "weer": "bewolkt"
+        },
+        {
+            "tijd": "14:40",
+            "taak": "Reparatie aan startmechanismen",
+            "duur": 40,
+            "weer": "bewolkt"
+        },
+        {
+            "tijd": "15:20",
+            "taak": "Inspectie van kabels",
+            "duur": 75,
+            "weer": "bewolkt"
         }
-    ]
+    ],
+    "totale_duur": 515,
+    "weer": {
+        "temperatuur": 15,
+        "weeromschrijving": "bewolkt",
+        "regen": false
+    }
 }

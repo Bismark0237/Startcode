@@ -13,48 +13,80 @@
             "tijd": "08:00",
             "taak": "Controle op veiligheidssensoren",
             "duur": 120,
+            "attractie": "Sky Diver",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 15,
             "weer": "bewolkt"
         },
         {
             "tijd": "10:00",
             "taak": "Inspectie van elektrische systemen",
             "duur": 60,
+            "attractie": "Adventure Ride",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 8,
             "weer": "bewolkt"
         },
         {
             "tijd": "11:00",
             "taak": "Onderhoud aan verlichting",
             "duur": 75,
+            "attractie": "Mountain Climb",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 12,
             "weer": "bewolkt"
         },
         {
             "tijd": "12:15",
             "taak": "Inspectie VR-installatie",
             "duur": 50,
+            "attractie": "Virtual Reality Adventure",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 20,
             "weer": "bewolkt"
         },
         {
             "tijd": "13:05",
             "taak": "Oplossen van technische storingen",
             "duur": 50,
+            "attractie": "Mega Spin",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 25,
             "weer": "bewolkt"
         },
         {
             "tijd": "13:55",
             "taak": "Controle van schroefverbindingen",
             "duur": 45,
+            "attractie": "Family Train",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 22,
             "weer": "bewolkt"
         },
         {
             "tijd": "14:40",
             "taak": "Reparatie aan startmechanismen",
             "duur": 40,
+            "attractie": "Starship Simulator",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 30,
             "weer": "bewolkt"
         },
         {
             "tijd": "15:20",
             "taak": "Inspectie van kabels",
             "duur": 75,
+            "attractie": "Magic Forest",
+            "beroepstype": "Elektrisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 15,
             "weer": "bewolkt"
         }
     ],

@@ -24,7 +24,7 @@ def pas_taken_aan_op_weer(onderhoudstaken, weer):
     return onderhoudstaken
 
 def genereer_dagplanning(personeelslid, onderhoudstaken, weer):
-    """Genereert een volledige dagplanning met weersinformatie."""
+    """Genereert een volledige dagplanning met weersinformatie, attracties, beroepstype, bevoegdheid en fysieke belasting."""
     max_werkduur = personeelslid.get("werktijd", 480)  # Max werkduur in minuten
     huidige_tijd = START_TIJD
     totale_duur = 0
@@ -37,12 +37,18 @@ def genereer_dagplanning(personeelslid, onderhoudstaken, weer):
                 break
             taak_naam = taak.get("omschrijving", "Onbekend")
             taak_duur = taak.get("duur", 0)
+            attractie = taak.get("attractie", "Geen attractie")
+            fysieke_belasting = taak.get("fysieke_belasting", "Onbekend")
             tijdslot = huidige_tijd.strftime("%H:%M")
             
             dagplanning.append({
                 "tijd": tijdslot,
                 "taak": taak_naam,
                 "duur": taak_duur,
+                "attractie": attractie,
+                "beroepstype": personeelslid.get("beroepstype", "Onbekend"),
+                "bevoegdheid": personeelslid.get("bevoegdheid", "Onbekend"),
+                "fysieke_belasting": fysieke_belasting,
                 "weer": weer["weeromschrijving"] if weer else "Onbekend"
             })
             
@@ -62,7 +68,12 @@ def main():
     onderhoudstaken = db.execute_query("SELECT * FROM onderhoudstaak WHERE beroepstype = %s", (personeelsgegevens["beroepstype"],))
     
     dagplanning, totale_duur = genereer_dagplanning(personeelsgegevens, onderhoudstaken, weer)
-    output_data = {"personeelsgegevens": personeelsgegevens, "dagtaken": dagplanning, "totale_duur": totale_duur, "weer": weer}
+    output_data = {
+        "personeelsgegevens": personeelsgegevens,
+        "dagtaken": dagplanning,
+        "totale_duur": totale_duur,
+        "weer": weer
+    }
     uitvoer_pad = Path(__file__).parent / f'dagplanning_{naam.replace(" ", "_")}.json'
     
     with open(uitvoer_pad, 'w') as json_bestand_uitvoer:

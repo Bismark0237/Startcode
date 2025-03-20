@@ -1,0 +1,106 @@
+{
+    "personeelsgegevens": {
+        "naam": "Bock",
+        "werktijd": 480,
+        "beroepstype": "Mechanisch Monteur",
+        "bevoegdheid": "Senior",
+        "specialist_in_attracties": [
+            "Mega Spin"
+        ],
+        "pauze_opsplitsen": false,
+        "max_fysieke_belasting": 30
+    },
+    "dagtaken": [
+        {
+            "tijd": "08:00",
+            "taak": "Mechanisch onderhoud aan scharnieren",
+            "duur": 45,
+            "attractie": "Twister",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 25,
+            "weer": "bewolkt"
+        },
+        {
+            "tijd": "08:45",
+            "taak": "Reparatie aan karretjes",
+            "duur": 120,
+            "attractie": "Galactic Journey",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 20,
+            "weer": "bewolkt"
+        },
+        {
+            "tijd": "10:45",
+            "taak": "Smering van tandwielen",
+            "duur": 40,
+            "attractie": "Whirlwind",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 18,
+            "weer": "bewolkt"
+        },
+        {
+            "tijd": "11:25",
+            "taak": "Inspectie kabelsystemen",
+            "duur": 45,
+            "attractie": "Jungle Trek",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 30,
+            "weer": "bewolkt"
+        },
+        {
+            "tijd": "12:10",
+            "taak": "Reparatie van waterkanonnen",
+            "duur": 60,
+            "attractie": "Mega Spin",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 15,
+            "weer": "bewolkt"
+        },
+        {
+            "tijd": "13:10",
+            "taak": "Onderhoud aan draaiassen",
+            "duur": 40,
+            "attractie": "Spinning Teacups",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 28,
+            "weer": "bewolkt"
+        },
+        {
+            "tijd": "13:50",
+            "taak": "Inspectie van remsystemen",
+            "duur": 120,
+            "attractie": "Rocket Ride",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 25,
+            "weer": "bewolkt"
+        },
+        {
+            "tijd": "15:50",
+            "taak": "Onderhoud aan treingeleiders",
+            "duur": 90,
+            "attractie": "Whirlwind Spin",
+            "beroepstype": "Mechanisch Monteur",
+            "bevoegdheid": "Senior",
+            "fysieke_belasting": 15,
+            "weer": "bewolkt"
+        },
+        {
+            "tijd": "TBD",
+            "taak": "Pauze",
+            "duur": 30
+        }
+    ],
+    "totale_duur": 560,
+    "weer": {
+        "temperatuur": 15,
+        "weeromschrijving": "bewolkt",
+        "regen": false
+    }
+}

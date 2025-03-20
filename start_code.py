@@ -23,6 +23,20 @@ def pas_taken_aan_op_weer(onderhoudstaken, weer):
         onderhoudstaken = [taak for taak in onderhoudstaken if not taak.get("is_buitenwerk", False)]
     return onderhoudstaken
 
+def plan_pauzes(dagplanning, werktijd, pauze_opsplitsen):
+    """Plant pauzes in het dagprogramma."""
+    if werktijd > 330:  # Meer dan 5,5 uur werken
+        if pauze_opsplitsen:
+            dagplanning.append({"tijd": "TBD", "taak": "Pauze", "duur": 15})
+            dagplanning.append({"tijd": "TBD", "taak": "Pauze", "duur": 15})
+        else:
+            dagplanning.append({"tijd": "TBD", "taak": "Pauze", "duur": 30})
+
+def extra_pauze_bij_hitte(dagplanning, temperatuur):
+    """Voegt een extra pauze toe als de temperatuur boven 30°C is."""
+    if temperatuur > 30:
+        dagplanning.append({"tijd": "TBD", "taak": "Extra pauze door hitte", "duur": 15})
+
 def genereer_dagplanning(personeelslid, onderhoudstaken, weer):
     """Genereert een volledige dagplanning met weersinformatie, attracties, beroepstype, bevoegdheid en fysieke belasting."""
     max_werkduur = personeelslid.get("werktijd", 480)  # Max werkduur in minuten
@@ -54,6 +68,11 @@ def genereer_dagplanning(personeelslid, onderhoudstaken, weer):
             
             huidige_tijd += timedelta(minutes=taak_duur)
             totale_duur += taak_duur
+    
+    # Pauze toevoegen
+    plan_pauzes(dagplanning, max_werkduur, personeelslid.get("pauze_opsplitsen", False))
+    # Extra pauze bij hitte
+    extra_pauze_bij_hitte(dagplanning, weer["temperatuur"])
     
     return dagplanning, totale_duur
 

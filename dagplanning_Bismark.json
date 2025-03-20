@@ -88,6 +88,11 @@
             "bevoegdheid": "Senior",
             "fysieke_belasting": 15,
             "weer": "bewolkt"
+        },
+        {
+            "tijd": "TBD",
+            "taak": "Pauze",
+            "duur": 30
         }
     ],
     "totale_duur": 515,
